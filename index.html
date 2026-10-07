@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For my princesss </title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Great+Vibes&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --cream: #FFFAF9;
+    --blush-soft: #FFF0F5;
+    --blush: #FFE1EA;
+    --rose: #FF8FAE;
+    --rose-deep: #E75480;
+    --rose-deepest: #C1477B;
+    --plum: #5C3A45;
+    --plum-soft: #8A5C68;
+    --gold-whisper: #FCEEDB;
+  }
+
+  *{ box-sizing: border-box; }
+
+  html{ scroll-behavior: smooth; }
+
+  body{
+    margin: 0;
+    background: linear-gradient(180deg, var(--blush-soft) 0%, var(--cream) 55%, var(--cream) 100%);
+    color: var(--plum);
+    font-family: 'Quicksand', sans-serif;
+    overflow-x: hidden;
+  }
+
+  img{ max-width: 100%; display: block; }
+
+  /* ---------- ambient falling petals ---------- */
+  .petals{
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 5;
+  }
+
+  .petal{
+    position: absolute;
+    top: -12%;
+    opacity: 0;
+    filter: drop-shadow(0 2px 6px rgba(199, 90, 130, 0.15));
+    animation: fall linear infinite;
+  }
+
+  .petal svg{ width: 100%; height: auto; display: block; overflow: visible; }
+
+  @keyframes fall{
+    0%   { transform: translate(0, -10vh) rotate(0deg);    opacity: 0; }
+    8%   { opacity: 0.95; }
+    25%  { transform: translate(-16px, 25vh) rotate(-20deg); }
+    50%  { transform: translate(12px, 50vh) rotate(16deg); }
+    75%  { transform: translate(-10px, 78vh) rotate(-12deg); }
+    92%  { opacity: 0.95; }
+    100% { transform: translate(8px, 112vh) rotate(22deg);  opacity: 0; }
+  }
+
+  @media (max-width: 640px){
+    .petal:nth-child(n+9){ display: none; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .petal{ animation: none; opacity: 0.5; }
+    html{ scroll-behavior: auto; }
+  }
+
+  /* ---------- layout shell ---------- */
+  main{
+    position: relative;
+    z-index: 10;
+  }
+
+  section{
+    position: relative;
+    padding: 6rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  /* ---------- hero ---------- */
+  .hero{
+    min-height: 100svh;
+    justify-content: center;
+    padding-top: 4rem;
+  }
+
+  .eyebrow{
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    color: var(--rose-deep);
+    margin: 0 0 1.2rem;
+  }
+
+  .hero h1{
+    font-family: 'Great Vibes', cursive;
+    font-weight: 400;
+    font-size: clamp(4.5rem, 16vw, 9rem);
+    line-height: 1;
+    margin: 0;
+    color: var(--rose-deepest);
+    text-shadow: 0 4px 24px rgba(231, 84, 128, 0.25);
+  }
+
+  .hero p{
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(1.15rem, 2.6vw, 1.5rem);
+    color: var(--plum-soft);
+    max-width: 30ch;
+    margin: 1.5rem 0 0;
+  }
+
+  .scroll-cue{
+    position: absolute;
+    bottom: 2.5rem;
+    font-size: 1.6rem;
+    color: var(--rose);
+    animation: bob 2.4s ease-in-out infinite;
+  }
+
+  @keyframes bob{
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(10px); }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .scroll-cue{ animation: none; }
+  }
+
+  .corner-flower{
+    position: absolute;
+    opacity: 0.9;
+    pointer-events: none;
+  }
+
+  .hero .corner-flower.tl{ top: 4%; left: -2%; width: 150px; transform: rotate(-18deg); }
+  .hero .corner-flower.br{ bottom: 4%; right: -3%; width: 170px; transform: rotate(24deg); }
+
+  /* ---------- letter ---------- */
+  .letter-wrap{ padding-top: 3rem; padding-bottom: 5rem; }
+
+  .letter-eyebrow{
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(2rem, 5vw, 2.6rem);
+    color: var(--rose-deep);
+    margin: 0 0 1.5rem;
+  }
+
+  .letter-card{
+    position: relative;
+    max-width: 620px;
+    background: #ffffff;
+    border-radius: 28px;
+    padding: clamp(2.2rem, 5vw, 3.5rem);
+    box-shadow: 0 30px 60px -20px rgba(214, 51, 108, 0.22);
+    border: 1px solid var(--blush);
+  }
+
+  .letter-card .corner-flower.tl{ top: -38px; left: -34px; width: 92px; transform: rotate(-12deg); }
+  .letter-card .corner-flower.br{ bottom: -38px; right: -34px; width: 92px; transform: rotate(15deg); }
+
+  .letter-card p{
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(1.15rem, 2.4vw, 1.35rem);
+    line-height: 1.75;
+    color: var(--plum);
+    margin: 0 0 1.1rem;
+    text-align: left;
+  }
+
+  .letter-card p:last-child{ margin-bottom: 0; }
+
+  .signature{
+    font-family: 'Great Vibes', cursive;
+    font-size: 1.6rem;
+    color: var(--rose-deep);
+    display: block;
+    margin-top: 1.2rem;
+  }
+
+  /* ---------- flower collection ---------- */
+  .collection{ padding-top: 1rem; padding-bottom: 2rem; }
+
+  .collection-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1.8rem;
+    max-width: 780px;
+    width: 100%;
+    margin-top: 2rem;
+    padding: 0 0.5rem;
+  }
+
+  .polaroid{
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 10px 10px 22px;
+    box-shadow: 0 18px 34px -18px rgba(214, 51, 108, 0.28);
+    border: 1px solid var(--blush);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .polaroid img{
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 8px;
+    display: block;
+  }
+
+  .polaroid:nth-child(1){ transform: rotate(-3deg); }
+  .polaroid:nth-child(2){ transform: rotate(2deg); }
+  .polaroid:nth-child(3){ transform: rotate(-1.5deg); }
+  .polaroid:nth-child(4){ transform: rotate(3deg); }
+  .polaroid:nth-child(5){ transform: rotate(-2deg); }
+
+  .polaroid:nth-child(1):hover{ transform: rotate(-3deg) translateY(-4px); box-shadow: 0 22px 40px -18px rgba(214, 51, 108, 0.35); }
+  .polaroid:nth-child(2):hover{ transform: rotate(2deg) translateY(-4px); box-shadow: 0 22px 40px -18px rgba(214, 51, 108, 0.35); }
+  .polaroid:nth-child(3):hover{ transform: rotate(-1.5deg) translateY(-4px); box-shadow: 0 22px 40px -18px rgba(214, 51, 108, 0.35); }
+  .polaroid:nth-child(4):hover{ transform: rotate(3deg) translateY(-4px); box-shadow: 0 22px 40px -18px rgba(214, 51, 108, 0.35); }
+  .polaroid:nth-child(5):hover{ transform: rotate(-2deg) translateY(-4px); box-shadow: 0 22px 40px -18px rgba(214, 51, 108, 0.35); }
+
+  @media (max-width: 640px){
+    .collection-grid{ grid-template-columns: repeat(2, 1fr); }
+  }
+
+  /* ---------- secret note ---------- */
+  .secret{ padding-top: 1rem; padding-bottom: 6rem; }
+
+  .secret-btn{
+    position: relative;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    color: #fff;
+    background: linear-gradient(135deg, var(--rose), var(--rose-deep));
+    border: none;
+    padding: 0.95rem 2.1rem;
+    border-radius: 999px;
+    cursor: pointer;
+    box-shadow: 0 14px 26px -10px rgba(231, 84, 128, 0.55);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .secret-btn:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 18px 30px -10px rgba(231, 84, 128, 0.65);
+  }
+
+  .secret-btn:focus-visible{
+    outline: 3px solid var(--rose-deep);
+    outline-offset: 3px;
+  }
+
+  .flower-burst{
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .burst-flower{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 26px;
+    height: 26px;
+    margin: -13px 0 0 -13px;
+    opacity: 0;
+  }
+
+  .flower-burst.burst .burst-flower{
+    animation: burstOut 0.9s ease-out forwards;
+  }
+
+  @keyframes burstOut{
+    0%   { transform: translate(0,0) scale(0.3); opacity: 0; }
+    25%  { opacity: 1; }
+    100% { transform: translate(var(--dx), var(--dy)) scale(1); opacity: 0; }
+  }
+
+  .secret-note{
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.15rem;
+    color: var(--plum-soft);
+    max-width: 32ch;
+    margin: 1.6rem auto 0;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease, opacity 0.5s ease, margin 0.5s ease;
+  }
+
+  .secret-note.visible{
+    max-height: 200px;
+    opacity: 1;
+    margin-top: 1.6rem;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .flower-burst.burst .burst-flower{ animation: none; opacity: 0; }
+  }
+
+  /* ---------- footer ---------- */
+  footer{
+    padding: 3rem 1.5rem 5rem;
+    text-align: center;
+  }
+
+  .flower-divider{
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 1.4rem;
+    margin-bottom: 1.4rem;
+  }
+
+  .flower-divider img{ width: 30px; opacity: 0.85; }
+  .flower-divider img:nth-child(2){ width: 22px; transform: translateY(6px) rotate(-8deg); }
+  .flower-divider img:nth-child(3){ width: 36px; }
+  .flower-divider img:nth-child(4){ width: 22px; transform: translateY(6px) rotate(8deg); }
+  .flower-divider img:nth-child(5){ width: 30px; }
+
+  footer p{
+    font-family: 'Great Vibes', cursive;
+    font-size: 1.4rem;
+    color: var(--rose-deep);
+    margin: 0;
+  }
+</style>
+</head>
+<body>
+
+<div class="petals" id="petals" aria-hidden="true"></div>
+
+<main>
+
+  <section class="hero">
+    <img class="corner-flower tl" src="flower2.png" alt="" onerror="this.style.display='none'">
+    <img class="corner-flower br" src="flower4.png" alt="" onerror="this.style.display='none'">
+    <p class="eyebrow">You are deserving of all happiness</p>
+    <h1>Roya</h1>
+    <p>The cutest and prettiest princess ever.</p>
+    <span class="scroll-cue">↓</span>
+  </section>
+
+  <section class="letter-wrap">
+    <h2 class="letter-eyebrow">for you, always</h2>
+    <div class="letter-card">
+      <img class="corner-flower tl" src="flower1.png" alt="" onerror="this.style.display='none'">
+      <img class="corner-flower br" src="flower3.png" alt="" onerror="this.style.display='none'">
+      <p>Mrs. Idiot,</p>
+      <p> I'm so sorry that i make u feel bad with my stupidness — its just i have intense feelings and it got me scared a bit,but it doesnt anymore, i love you so so so so s oso sosossoso much.</p>
+      <p>You make my boring days feel so much fun, u make me feel new things i love u i love u. Thank you for being exactly who you are — i loved everything i loved making u feel good, i would do it again trillon times, i love you i love u i love u.</p>
+      <span class="signature">yours, always</span>
+    </div>
+  </section>
+
+  <section class="collection">
+    <h2 class="letter-eyebrow">i love my princess</h2>
+    <div class="collection-grid">
+      <div class="polaroid"><img src="flower1.jpg" alt="" onerror="this.parentElement.style.display='none'"></div>
+      <div class="polaroid"><img src="flower2.jpg" alt="" onerror="this.parentElement.style.display='none'"></div>
+      <div class="polaroid"><img src="flower3.jpg" alt="" onerror="this.parentElement.style.display='none'"></div>
+      <div class="polaroid"><img src="flower4.jpg" alt="" onerror="this.parentElement.style.display='none'"></div>
+      <div class="polaroid"><img src="flower5.jpg" alt="" onerror="this.parentElement.style.display='none'"></div>
+    </div>
+  </section>
+
+  <section class="secret">
+    <button class="secret-btn" onclick="revealSecret()">tap for a secret 💌</button>
+    <div id="flower-burst" class="flower-burst" aria-hidden="true">
+      <span class="burst-flower" style="--dx:-46px; --dy:-38px;"><img src="flower1.png" alt="" onerror="this.parentElement.style.display='none'"></span>
+      <span class="burst-flower" style="--dx:0px;   --dy:-58px;"><img src="flower2.png" alt="" onerror="this.parentElement.style.display='none'"></span>
+      <span class="burst-flower" style="--dx:46px;  --dy:-38px;"><img src="flower3.png" alt="" onerror="this.parentElement.style.display='none'"></span>
+      <span class="burst-flower" style="--dx:-58px; --dy:12px;"><img src="flower4.png" alt="" onerror="this.parentElement.style.display='none'"></span>
+      <span class="burst-flower" style="--dx:58px;  --dy:12px;"><img src="flower1.png" alt="" onerror="this.parentElement.style.display='none'"></span>
+      <span class="burst-flower" style="--dx:0px;   --dy:50px;"><img src="flower2.png" alt="" onerror="this.parentElement.style.display='none'"></span>
+    </div>
+    <p id="secret-note" class="secret-note">P.S. I love you more than small cats — thsi should tell u a lot 😡🧕🏿. </p>
+  </section>
+
+</main>
+
+<footer>
+  <div class="flower-divider" aria-hidden="true">
+    <img src="flower1.png" alt="" onerror="this.style.display='none'">
+    <img src="flower2.png" alt="" onerror="this.style.display='none'">
+    <img src="flower3.png" alt="" onerror="this.style.display='none'">
+    <img src="flower4.png" alt="" onerror="this.style.display='none'">
+    <img src="flower1.png" alt="" onerror="this.style.display='none'">
+  </div>
+  <p>all my love, is yours</p>
+</footer>
+
+<script>
+  (function(){
+    var colors = [
+      { light: '#FFEDF2', dark: '#FF8FAE', stroke: 'none' },
+      { light: '#FFFFFF', dark: '#FFC2D6', stroke: 'none' },
+      { light: '#FFFFFF', dark: '#FFF1F6', stroke: '#FFC2D6' },
+      { light: '#FFD6E4', dark: '#F76C93', stroke: 'none' }
+    ];
+
+    var petalPath = 'M20,20 C13,15 12,6 18,2 C19,1 21,1 22,2 C28,6 27,15 20,20 Z';
+
+    function flowerSVG(c, uid){
+      var petals = '';
+      for (var a = 0; a < 360; a += 72){
+        petals += '<path d="' + petalPath + '" transform="rotate(' + a + ' 20 20)"'
+          + ' fill="url(#g' + uid + ')"'
+          + (c.stroke !== 'none' ? ' stroke="' + c.stroke + '" stroke-width="0.6"' : '')
+          + '/>';
+      }
+      var stamens = '';
+      for (var s = 0; s < 5; s++){
+        var ang = (s * 72) * Math.PI / 180;
+        var sx = (20 + Math.cos(ang) * 3.6).toFixed(2);
+        var sy = (20 + Math.sin(ang) * 3.6).toFixed(2);
+        stamens += '<circle cx="' + sx + '" cy="' + sy + '" r="0.9" fill="#FFCF7A"/>';
+      }
+      return '<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">'
+        + '<defs><radialGradient id="g' + uid + '" cx="50%" cy="55%" r="65%">'
+        + '<stop offset="0%" stop-color="' + c.light + '"/>'
+        + '<stop offset="100%" stop-color="' + c.dark + '"/>'
+        + '</radialGradient></defs>'
+        + petals
+        + stamens
+        + '<circle cx="20" cy="20" r="2.2" fill="#E75480"/>'
+        + '</svg>';
+    }
+
+    var container = document.getElementById('petals');
+    if (!container) return;
+
+    var count = window.innerWidth < 640 ? 9 : 16;
+
+    for (var i = 0; i < count; i++){
+      var div = document.createElement('div');
+      div.className = 'petal';
+      var left = Math.round((i / count) * 100 + (Math.random() * 6 - 3));
+      var size = 18 + Math.round(Math.random() * 22);
+      var duration = (9 + Math.random() * 8).toFixed(1);
+      var delay = (Math.random() * 6).toFixed(1);
+      div.style.left = left + '%';
+      div.style.width = size + 'px';
+      div.style.animationDuration = duration + 's';
+      div.style.animationDelay = delay + 's';
+      div.innerHTML = flowerSVG(colors[i % colors.length], i);
+      container.appendChild(div);
+    }
+  })();
+
+  function revealSecret(){
+    var note = document.getElementById('secret-note');
+    var burst = document.getElementById('flower-burst');
+    note.classList.toggle('visible');
+    burst.classList.remove('burst');
+    void burst.offsetWidth;
+    burst.classList.add('burst');
+  }
+</script>
+
+</body>
+</html>
